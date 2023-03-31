@@ -1,5 +1,6 @@
-public class StudentClass implements ConsultantPrint,ConsultantSort{
+public class StudentClass implements Consultant{
     private Student[] students;
+    private Consultant consultant;
     private int nr;
     private final int N = 10;
 
@@ -26,33 +27,23 @@ public class StudentClass implements ConsultantPrint,ConsultantSort{
     }
 
     public void Sort(){
-        boolean sorted = false;
 
-        while (!sorted){
-            sorted = true;
-            for(int i = 0 ; i < nr -1 ; i++){
-                if(students[i].compareTo(students[i+1]) > 0){
-                    Student temp = new Student(students[i].clone());
-                    students[i] = students[i+1].clone();
-                    students[i+1] = temp.clone();
-
-                    sorted = false;
-                }
-            }
-        }
     }
 
     public void AddConsultant(Consultant consultant){
-
+        this.consultant = consultant;
     }
 
-    public void ExecuteOrder(){
-
+    public Student[] getStudents() {
+        return students;
     }
-
-
 
     public int getN(){
         return nr;
+    }
+
+    @Override
+    public void ExecuteOrder(Student[] students) {
+        consultant.ExecuteOrder(students);
     }
 }

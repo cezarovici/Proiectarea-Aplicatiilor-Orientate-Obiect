@@ -8,8 +8,8 @@ public class Main {
        group.Add(new Student("Viorel",20,9));
        group.Add(new Student("Mihai",20,7));
 
-
-
+       group.AddConsultant(new ConsultantPrint());
+       group.ExecuteOrder(group.getStudents());
 
     }
 }
